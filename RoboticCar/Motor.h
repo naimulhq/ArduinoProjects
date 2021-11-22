@@ -18,11 +18,12 @@ namespace elegoo{
             Motor();
             Motor(int,int);
             virtual ~Motor();
-            void rotateClockwise();
-            void rotateCounterClockWise();
-            void stopMotor();
+            void initializePins(void);
+            void rotateClockwise(void);
+            void rotateCounterClockwise(void);
+            void setSpeed(int);
     } 
-    
+
 }
 
 #endif
