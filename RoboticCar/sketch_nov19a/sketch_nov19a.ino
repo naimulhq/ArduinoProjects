@@ -1,25 +1,27 @@
-#include "Motor.h"
+#include "RoboticCar.h"
 
-typedef elegoo::Motor Motor;
-Motor left_motor(5,7);
-Motor right_motor(6,8);
+elegoo::RoboticCar Car(5,7,6,8,3);
+
 
 void setup() {
   // put your setup code here, to run once:
-  pinMode(3,OUTPUT);
-  
+  Car.startRoboticCar();
+  Car.setCarSpeed(100);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   // 7 = AIN1, 8 = BIN1, 3 = STBY
-  digitalWrite(3,HIGH);
-  left_motor.setSpeed(100);
-  left_motor.rotateClockwise();
-  right_motor.setSpeed(100);
-  right_motor.rotateClockwise();
   
+  Car.goForward();
   delay(10000);
-  
+  Car.goReverse();
+  delay(10000);
+  Car.turnLeft();
+  delay(1000);
+  Car.turnRight();
+  delay(2000);
+  Car.turnLeft();
+  delay(1000);
  
 }

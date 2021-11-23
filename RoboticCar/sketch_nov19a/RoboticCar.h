@@ -2,21 +2,28 @@
 #define ROBOTIC_CAR_H
 #include "Motor.h"
 
-typedef elegoo::Motor Motor;
+namespace elegoo{
 
-class RoboticCar{
-    private:
-        Motor left_motor;
-        Motor right_motor;
-    public:
-        RoboticCar();
-        virtual ~RoboticCar();
-        void turnLeft();
-        void turnRight();
-        void goForward();
-        void goReverse();
-        void stopRoboticCar();
+    typedef elegoo::Motor Motor;
 
-};
+    class RoboticCar{
+        private:
+            Motor *left_motor;
+            Motor *right_motor;
+            int _standby_pin; // Used for stopping and starting the motors.
+        public:
+            RoboticCar();
+            RoboticCar(int,int,int,int,int);
+            virtual ~RoboticCar();
+            void turnLeft();
+            void turnRight();
+            void goForward();
+            void goReverse();
+            void startRoboticCar();
+            void stopRoboticCar();
+            void setCarSpeed(int);
+
+    };
+}
 
 #endif
